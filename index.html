@@ -37,7 +37,7 @@
             <option value="custom">Custom…</option>
           </select>
           <div id="customWrap" class="hide">
-            <input id="customReels" type="number" min="3" max="20" placeholder="3–20">
+            <input id="customReels" type="number" min="1" max="100" placeholder="1-100">
           </div>
 
           <label>Base jackpot (3 reels)</label>
@@ -52,9 +52,8 @@
 
       <div class="col">
         <div class="h">Balance</div>
-        <div class="balance" id="balance">0</div>
+        <div class="balance" id="balance">1000</div>
         <div class="row gap">
-          <button id="add100">+100</button>
           <button id="resetBal" class="ghost">Reset</button>
         </div>
         <div class="muted small">Local-only. Saved in this device.</div>
@@ -72,7 +71,7 @@
       <div class="row space-between">
         <div>
           <div class="h">Slot Machine</div>
-          <div class="muted">Spin and win. No money—just points.</div>
+          <div class="muted">Spin and win.</div>
         </div>
         <button id="spinBtn">🎰 SPIN</button>
       </div>
