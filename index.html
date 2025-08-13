@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Lucky Slots — Main Features</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="logo">LS</div>
+    <div class="titles">
+      <h1>Lucky Slots</h1>
+      <div class="muted">Main features · offline ready · no global leaderboard</div>
+    </div>
+    <div class="auth">
+      <div id="userBox" class="muted small">Not signed in</div>
+      <div class="auth-btns">
+        <button id="googleBtn">Sign in with Google</button>
+        <button id="emailBtn">Email Login</button>
+        <button id="logoutBtn" class="ghost">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="pan row gap">
+      <div class="col">
+        <div class="h">Settings</div>
+        <div class="form">
+          <label>Reel count</label>
+          <select id="reelCount">
+            <option value="3">3 reels</option>
+            <option value="5" selected>5 reels</option>
+            <option value="10">10 reels</option>
+            <option value="custom">Custom…</option>
+          </select>
+          <div id="customWrap" class="hide">
+            <input id="customReels" type="number" min="3" max="20" placeholder="3–20">
+          </div>
+
+          <label>Base jackpot (3 reels)</label>
+          <input id="baseJack" type="number" value="1000" min="10">
+
+          <label>Bet per spin</label>
+          <input id="bet" type="number" value="10" min="1">
+
+          <div class="muted small">Jackpot scales with reels: <code>Base × (reels/3)^1.5</code></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="h">Balance</div>
+        <div class="balance" id="balance">0</div>
+        <div class="row gap">
+          <button id="add100">+100</button>
+          <button id="resetBal" class="ghost">Reset</button>
+        </div>
+        <div class="muted small">Local-only. Saved in this device.</div>
+      </div>
+
+      <div class="col">
+        <div class="h">Player</div>
+        <input id="playerName" type="text" placeholder="Display name (local)">
+        <button id="saveName" class="ghost">Save name</button>
+        <div class="muted small">Used for local leaderboard entries when offline.</div>
+      </div>
+    </section>
+
+    <section class="pan">
+      <div class="row space-between">
+        <div>
+          <div class="h">Slot Machine</div>
+          <div class="muted">Spin and win. No money—just points.</div>
+        </div>
+        <button id="spinBtn">🎰 SPIN</button>
+      </div>
+
+      <div id="slotArea" class="slots"></div>
+
+      <div class="row gap">
+        <div class="pan light grow">
+          <div class="h">Result</div>
+          <div id="result" class="muted">—</div>
+        </div>
+        <div class="pan light">
+          <div class="h">Rules</div>
+          <div id="rules" class="muted small">All-match = Jackpot. 2+ matches pay proportionally by symbol weight.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="row gap">
+      <div class="pan grow">
+        <div class="h">Local Leaderboard (device)</div>
+        <div id="localLb" class="lb"></div>
+        <div class="row gap">
+          <button id="saveScore">Save current balance</button>
+          <button id="clearLb" class="ghost">Clear</button>
+        </div>
+      </div>
+
+      <div class="pan">
+        <div class="h">My Cloud Scores</div>
+        <div class="muted small">Optional — requires login. Synced to your account only.</div>
+        <div id="cloudScores" class="lb"></div>
+        <div class="row gap">
+          <button id="pushScore">Save to cloud</button>
+          <button id="pullScores" class="ghost">Refresh</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hide"></div>
+
+  <!-- Firebase SDKs (only used if you add your firebase-config.js with real keys) -->
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script defer src="firebase-config.sample.js"></script>
+  <script defer src="app.js"></script>
+</body>
+</html>
